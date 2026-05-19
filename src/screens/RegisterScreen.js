@@ -9,6 +9,7 @@ import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
 import { theme } from '../theme';
 import { useApp } from '../context/AppContext';
+import GlobalFooter from '../components/GlobalFooter';
 
 const { width, height } = Dimensions.get('window');
 
@@ -113,6 +114,8 @@ export default function RegisterScreen({ navigation }) {
                 <Text style={styles.footerLink}>Fazer Login</Text>
               </TouchableOpacity>
             </View>
+
+            <GlobalFooter />
           </View>
         </BlurView>
       </KeyboardAvoidingView>

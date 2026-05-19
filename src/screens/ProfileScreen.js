@@ -8,6 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { theme } from '../theme';
 import { useApp } from '../context/AppContext';
+import GlobalFooter from '../components/GlobalFooter';
 
 const StatCard = ({ icon, value, label, color }) => (
   <View style={styles.statCard}>
@@ -24,7 +25,7 @@ const StatCard = ({ icon, value, label, color }) => (
 
 const MenuItem = ({ icon, label, sublabel, onPress, rightElement, color, danger }) => (
   <TouchableOpacity style={styles.menuItem} onPress={onPress} activeOpacity={0.7}>
-    <View style={[styles.menuIcon, { backgroundColor: color ? `${color}20` : theme.colors.surface }]}>
+    <View style={[styles.menuIcon, { backgroundColor: color ? `${color}20` : theme.colors.surface }]} >
       <Ionicons name={icon} size={20} color={color || (danger ? theme.colors.error : theme.colors.textMuted)} />
     </View>
     <View style={styles.menuContent}>
@@ -73,6 +74,12 @@ export default function ProfileScreen({ navigation }) {
               <Text style={styles.userName}>{state.user.name}</Text>
               <Text style={styles.userEmail}>{state.user.email}</Text>
               
+              <View style={styles.ratingContainer}>
+                <Ionicons name="star" size={16} color={theme.colors.star || '#FFD700'} />
+                <Text style={styles.ratingValue}>{state.user.rating || '4.9'}</Text>
+                <Text style={styles.ratingCount}>({state.user.reviews || '128'})</Text>
+              </View>
+
               <View style={styles.memberBadge}>
                 <Ionicons name="shield-checkmark" size={13} color={theme.colors.primary} />
                 <Text style={styles.memberText}>Membro desde {state.user.memberSince}</Text>
@@ -92,6 +99,33 @@ export default function ProfileScreen({ navigation }) {
           <StatCard icon="cut" value={completedCuts} label="Cortes" color={theme.colors.primary} />
           <StatCard icon="calendar" value={upcomingCuts} label="Agendados" color={theme.colors.info} />
           <StatCard icon="heart" value={favorites} label="Favoritos" color="#FF453A" />
+        </View>
+
+        {/* Achievements */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>CONQUISTAS</Text>
+            <TouchableOpacity hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
+              <Text style={styles.seeAllText}>Ver todas</Text>
+            </TouchableOpacity>
+          </View>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.achievementsList}>
+            <View style={styles.achievementCard}>
+              <Image source={require('../../assets/badges/100_cuts.png')} style={styles.achievementImage} />
+              <Text style={styles.achievementTitle}>100+ Cortes</Text>
+              <Text style={styles.achievementDesc}>Fez mais de 100 cortes no app</Text>
+            </View>
+            <View style={styles.achievementCard}>
+              <Image source={require('../../assets/badges/top_rated.png')} style={styles.achievementImage} />
+              <Text style={styles.achievementTitle}>Cliente Top</Text>
+              <Text style={styles.achievementDesc}>Avaliação máxima constante</Text>
+            </View>
+            <View style={styles.achievementCard}>
+              <Image source={require('../../assets/badges/pioneer.png')} style={styles.achievementImage} />
+              <Text style={styles.achievementTitle}>Pioneiro</Text>
+              <Text style={styles.achievementDesc}>Um dos primeiros usuários</Text>
+            </View>
+          </ScrollView>
         </View>
 
         {/* My Info */}
@@ -229,6 +263,7 @@ export default function ProfileScreen({ navigation }) {
         {/* Version */}
         <Text style={styles.version}>BarberGo v1.0.0 • Feito com ❤️</Text>
 
+        <GlobalFooter />
         <View style={{ height: 100 }} />
       </ScrollView>
     </View>
@@ -286,7 +321,27 @@ const styles = StyleSheet.create({
   userEmail: {
     color: theme.colors.textMuted,
     fontSize: 14,
+    marginBottom: 8,
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 12,
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+  },
+  ratingValue: {
+    color: theme.colors.text,
+    fontSize: 15,
+    fontWeight: theme.fontWeight.bold,
+    marginLeft: 6,
+  },
+  ratingCount: {
+    color: theme.colors.textMuted,
+    fontSize: 13,
+    marginLeft: 4,
   },
   memberBadge: {
     flexDirection: 'row',
@@ -353,12 +408,54 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 24,
   },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+  },
   sectionTitle: {
     color: theme.colors.textDisabled,
     fontSize: 11,
     fontWeight: theme.fontWeight.bold,
     letterSpacing: 1.5,
     marginBottom: 12,
+  },
+  seeAllText: {
+    color: theme.colors.primary,
+    fontSize: 12,
+    fontWeight: theme.fontWeight.bold,
+  },
+  achievementsList: {
+    gap: 12,
+    paddingRight: 20,
+  },
+  achievementCard: {
+    backgroundColor: theme.colors.card,
+    borderRadius: theme.borderRadius.xl,
+    padding: 16,
+    width: 140,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.05)',
+  },
+  achievementImage: {
+    width: 60,
+    height: 60,
+    marginBottom: 12,
+    borderRadius: 30,
+  },
+  achievementTitle: {
+    color: theme.colors.text,
+    fontSize: 14,
+    fontWeight: theme.fontWeight.bold,
+    textAlign: 'center',
+    marginBottom: 4,
+  },
+  achievementDesc: {
+    color: theme.colors.textMuted,
+    fontSize: 11,
+    textAlign: 'center',
+    lineHeight: 14,
   },
   menuCard: {
     backgroundColor: theme.colors.card,

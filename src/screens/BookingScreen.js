@@ -9,6 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { theme } from '../theme';
 import { ServiceCard } from '../components/ServiceCard';
 import { useApp } from '../context/AppContext';
+import GlobalFooter from '../components/GlobalFooter';
 
 const { width } = Dimensions.get('window');
 
@@ -431,6 +432,7 @@ export default function BookingScreen({ route, navigation }) {
           </View>
         )}
 
+        <GlobalFooter />
         <View style={{ height: 120 }} />
       </ScrollView>
 

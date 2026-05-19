@@ -10,6 +10,7 @@ import { theme } from '../theme';
 import { barbers, categories } from '../data/mockData';
 import { BarberCard, BarberCardHorizontal } from '../components/BarberCard';
 import { useApp } from '../context/AppContext';
+import GlobalFooter from '../components/GlobalFooter';
 
 const { width } = Dimensions.get('window');
 
@@ -252,6 +253,7 @@ export default function HomeScreen({ navigation }) {
           )}
         </View>
 
+        <GlobalFooter />
         <View style={{ height: 100 }} />
       </Animated.ScrollView>
     </View>

@@ -7,6 +7,7 @@ import { theme } from '../theme';
 import { barbers, categories } from '../data/mockData';
 import { BarberCard } from '../components/BarberCard';
 import { useApp } from '../context/AppContext';
+import GlobalFooter from '../components/GlobalFooter';
 
 export default function BarbersListScreen({ navigation }) {
   const { state, setFilter } = useApp();
@@ -74,7 +75,7 @@ export default function BarbersListScreen({ navigation }) {
         keyExtractor={item => item.id}
         contentContainerStyle={styles.list}
         showsVerticalScrollIndicator={false}
-        ListFooterComponent={<View style={{ height: 100 }} />}
+        ListFooterComponent={<><GlobalFooter /><View style={{ height: 100 }} /></>}
         renderItem={({ item }) => (
           <BarberCard
             barber={item}

@@ -9,6 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { theme } from '../theme';
 import { StarRating } from '../components/StarRating';
 import { useApp } from '../context/AppContext';
+import GlobalFooter from '../components/GlobalFooter';
 
 const { width, height } = Dimensions.get('window');
 const HEADER_HEIGHT = 300;
@@ -248,6 +249,7 @@ export default function BarberProfileScreen({ route, navigation }) {
           )}
         </View>
 
+        <GlobalFooter />
         <View style={{ height: 120 }} />
       </Animated.ScrollView>
 

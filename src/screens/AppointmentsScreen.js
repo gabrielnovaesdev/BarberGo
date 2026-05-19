@@ -10,6 +10,7 @@ import { theme } from '../theme';
 import { StatusTracker } from '../components/StatusTracker';
 import { InteractiveStarRating } from '../components/StarRating';
 import { useApp } from '../context/AppContext';
+import GlobalFooter from '../components/GlobalFooter';
 
 const STATUS_COLORS = {
   upcoming: { bg: 'rgba(245,166,35,0.12)', border: 'rgba(245,166,35,0.3)', text: theme.colors.primary, label: 'Agendado' },
@@ -233,6 +234,7 @@ export default function AppointmentsScreen({ navigation }) {
             })}
           </View>
         )}
+        <GlobalFooter />
         <View style={{ height: 100 }} />
       </ScrollView>
 
