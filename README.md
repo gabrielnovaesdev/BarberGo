@@ -54,3 +54,118 @@ A aplicação permite que usuários encontrem barbearias próximas, visualizem s
 ---
 
 ## 🏗️ Estrutura do Projeto
+BarberGo/
+
+├── App.js              # Entrada principal da aplicação
+
+├── index.js            # Ponto de registro do app
+
+├── app.json            # Configurações do Expo
+
+├── vercel.json         # Configurações de deploy web
+
+├── package.json        # Dependências e scripts
+
+├── jsconfig.json       # Configuração de paths
+
+├── assets/             # Imagens, fontes e recursos estáticos
+
+└── src/                # Código-fonte principal
+
+├── screens/        # Telas da aplicação
+
+├── components/     # Componentes reutilizáveis
+
+├── navigation/     # Configuração de rotas
+
+└── styles/         # Estilos globais
+
+---
+
+## ⚙️ Como Rodar Localmente
+
+### Pré-requisitos
+
+- [Node.js](https://nodejs.org/) v18 ou superior
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- Aplicativo **Expo Go** no celular (opcional, para testar no dispositivo)
+
+### Instalação
+
+```bash
+# Clone o repositório
+git clone https://github.com/gabrielnovaesdev/BarberGo.git
+
+# Acesse a pasta do projeto
+cd BarberGo
+
+# Instale as dependências
+npm install
+
+# Inicie o projeto
+npm start
+```
+
+### Executando nas plataformas
+
+```bash
+npm run android   # Emulador Android
+npm run ios       # Simulador iOS (requer macOS)
+npm run web       # Navegador web
+```
+
+Ou escaneie o QR code gerado com o app **Expo Go** para testar no seu dispositivo físico.
+
+---
+
+## 🌐 Deploy
+
+A versão web está disponível em: **[barber-go-sigma.vercel.app](https://barber-go-sigma.vercel.app/)**
+
+O deploy é feito via [Vercel](https://vercel.com/) usando o comando:
+
+```bash
+npm run build   # Gera o build web via expo export
+```
+
+---
+
+## 🎯 Objetivos de Aprendizado
+
+Este projeto foi desenvolvido para aprofundar conhecimentos em:
+
+- Desenvolvimento de aplicações mobile com **React Native** e **Expo**
+- Navegação entre telas com **React Navigation** (Stack e Bottom Tabs)
+- Integração com serviços de **geolocalização** e **mapas**
+- Criação de **UIs complexas** com animações e efeitos visuais
+- Uso estratégico de **IA generativa** como ferramenta de apoio no desenvolvimento
+- **Engenharia de prompts** aplicada à programação
+- Boas práticas de **organização de código** e estrutura de projetos
+
+---
+
+## 👨‍💻 Desenvolvedor
+
+<div align="center">
+
+**Gabriel Novaes**
+
+Estudante de Análise e Desenvolvimento de Sistemas (ADS) na UniCarioca.
+Apaixonado por desenvolvimento mobile, web e inteligência artificial.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-gabrielnovaesdev-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/gabrielnovaesdev/)
+[![GitHub](https://img.shields.io/badge/GitHub-gabrielnovaesdev-181717?style=flat-square&logo=github)](https://github.com/gabrielnovaesdev)
+
+</div>
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+<div align="center">
+  Feito com dedicação por <a href="https://github.com/gabrielnovaesdev">Gabriel Novaes</a>
+</div>
