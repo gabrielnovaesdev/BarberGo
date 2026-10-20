@@ -19,7 +19,7 @@
 
 O **BarberGo** é um app que conecta clientes a barbeiros que atendem **em domicílio**. O cliente escolhe o profissional, o serviço, o dia e o horário, e acompanha o barbeiro desde a confirmação até a chegada na porta de casa.
 
-O projeto foi construído com React Native e Expo, roda em Android, iOS e no navegador, e usou IA generativa como ferramenta de apoio no desenvolvimento. Os barbeiros, avaliações e agendamentos são **dados simulados** (`src/data/mockData.js`); ainda não há back-end.
+O projeto foi construído com React Native e Expo, roda em Android, iOS e no navegador. Os barbeiros, avaliações e agendamentos são **dados simulados** (`src/data/mockData.js`); ainda não há back-end.
 
 No computador, a versão web mostra o app dentro de um mockup de celular, em um layout de tela dividida.
 
@@ -129,8 +129,6 @@ Este projeto foi desenvolvido para aprofundar conhecimentos em:
 - Navegação entre telas com **React Navigation** (Stack e Bottom Tabs)
 - Gerenciamento de estado global com **Context API** e `useReducer`
 - Criação de **UIs complexas** com a API `Animated`, gradientes e desfoque
-- Uso estratégico de **IA generativa** como ferramenta de apoio no desenvolvimento
-- **Engenharia de prompts** aplicada à programação
 - Boas práticas de **organização de código** e estrutura de projetos
 
 ---
