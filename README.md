@@ -2,13 +2,12 @@
 
 # 💈 BarberGo
 
-### Plataforma de agendamento para barbearias — mobile-first com React Native & Expo
+### O barbeiro vai até você: agendamento de corte em domicílio, com React Native e Expo
 
 [![React Native](https://img.shields.io/badge/React_Native-0.83-61DAFB?style=flat-square&logo=react)](https://reactnative.dev/)
 [![Expo](https://img.shields.io/badge/Expo-55.0-000020?style=flat-square&logo=expo)](https://expo.dev/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?style=flat-square&logo=vercel)](https://barber-go-sigma.vercel.app/)
-[![License](https://img.shields.io/badge/Licença-MIT-green?style=flat-square)](LICENSE)
 
 **[🚀 Ver Demo ao Vivo](https://barber-go-sigma.vercel.app/)**
 
@@ -18,20 +17,23 @@
 
 ## 📋 Sobre o Projeto
 
-O **BarberGo** é uma aplicação mobile desenvolvida com React Native e Expo que simula uma plataforma completa de agendamento para barbearias. O projeto foi criado com foco em boas práticas de desenvolvimento, experiência do usuário e uso estratégico de IA generativa como ferramenta de apoio na construção de software.
+O **BarberGo** é um app que conecta clientes a barbeiros que atendem **em domicílio**. O cliente escolhe o profissional, o serviço, o dia e o horário, e acompanha o barbeiro desde a confirmação até a chegada na porta de casa.
 
-A aplicação permite que usuários encontrem barbearias próximas, visualizem serviços disponíveis e realizem agendamentos de forma rápida e intuitiva — tudo dentro de uma interface moderna e responsiva.
+O projeto foi construído com React Native e Expo, roda em Android, iOS e no navegador, e usou IA generativa como ferramenta de apoio no desenvolvimento. Os barbeiros, avaliações e agendamentos são **dados simulados** (`src/data/mockData.js`); ainda não há back-end.
+
+No computador, a versão web mostra o app dentro de um mockup de celular, em um layout de tela dividida.
 
 ---
 
 ## ✨ Funcionalidades
 
-- 📍 **Localização de barbearias** — integração com mapas para encontrar estabelecimentos próximos
-- 📅 **Agendamento de horários** — calendário interativo para escolha de data e hora
-- 🗺️ **Mapa interativo** — visualização das barbearias em mapa com marcadores
-- 🔔 **Modais e notificações** — feedback visual em tempo real para o usuário
-- 🎨 **Design moderno** — gradientes, ícones vetoriais e animações fluidas com Reanimated
-- 📱 **Multi-plataforma** — compatível com Android, iOS e Web (via Expo)
+- 👋 **Boas-vindas:** splash animada, onboarding, login e cadastro
+- 💈 **Barbeiros:** lista com busca, filtros, nota, distância, especialidades e favoritos
+- 👤 **Perfil do barbeiro:** biografia, portfólio de cortes, avaliações e serviços com preço
+- 📅 **Agendamento em 3 passos:** serviço, depois data e horário, depois confirmação com o endereço do cliente
+- 🛵 **Acompanhamento do atendimento:** Confirmado → A caminho → Chegou → Em atendimento → Concluído
+- 🗂️ **Meus agendamentos:** histórico, detalhes em modal e cancelamento
+- 🙍 **Perfil do cliente:** dados pessoais, endereço e total de cortes
 
 ---
 
@@ -39,46 +41,35 @@ A aplicação permite que usuários encontrem barbearias próximas, visualizem s
 
 | Tecnologia | Versão | Uso |
 |---|---|---|
-| React Native | 0.83.4 | Framework principal |
-| Expo | ~55.0 | Toolchain e build |
-| React Navigation | ^7.x | Navegação entre telas (Stack + Bottom Tabs) |
-| React Native Maps | ^1.27 | Mapa interativo |
-| React Native Calendars | ^1.131 | Calendário de agendamento |
-| Expo Location | ^55.1 | Geolocalização do usuário |
-| Expo Linear Gradient | ^55.0 | Gradientes visuais |
-| Expo Blur | ^55.0 | Efeitos de blur na UI |
-| React Native Reanimated | ^4.3 | Animações performáticas |
-| React Native Modal | ^14.0 | Modais customizados |
-| Expo Vector Icons | ^15.1 | Biblioteca de ícones |
+| React Native | 0.83 | Framework principal |
+| Expo | ~55.0 | Toolchain, build e versão web |
+| React Navigation | ^7.x | Navegação em pilha e abas inferiores |
+| Context API + `useReducer` | React 19 | Estado global: usuário, agendamentos e favoritos |
+| API `Animated` | React Native | Animações de entrada, cartões e rastreio de status |
+| Expo Linear Gradient | ^55.0 | Gradientes da interface |
+| Expo Blur | ^55.0 | Desfoque nas telas de login e cadastro |
+| Expo Vector Icons | ^15.1 | Ícones (Ionicons) |
+| React Native Web | ^0.21 | Versão para navegador publicada na Vercel |
 
 ---
 
 ## 🏗️ Estrutura do Projeto
+
+```text
 BarberGo/
-
-├── App.js              # Entrada principal da aplicação
-
-├── index.js            # Ponto de registro do app
-
+├── App.js              # Entrada da aplicação e layout desktop com mockup
+├── index.js            # Registro do app
 ├── app.json            # Configurações do Expo
-
 ├── vercel.json         # Configurações de deploy web
-
-├── package.json        # Dependências e scripts
-
-├── jsconfig.json       # Configuração de paths
-
-├── assets/             # Imagens, fontes e recursos estáticos
-
-└── src/                # Código-fonte principal
-
-├── screens/        # Telas da aplicação
-
-├── components/     # Componentes reutilizáveis
-
-├── navigation/     # Configuração de rotas
-
-└── styles/         # Estilos globais
+├── assets/             # Ícones, splash e selos
+└── src/
+    ├── screens/        # 10 telas: Splash, Onboarding, Login, Home, Agendamento...
+    ├── components/     # BarberCard, ServiceCard, StarRating, StatusTracker...
+    ├── context/        # AppContext: estado global com useReducer
+    ├── navigation/     # Rotas em pilha e abas
+    ├── data/           # Dados simulados de barbeiros e agendamentos
+    └── theme/          # Cores, espaçamentos e tipografia
+```
 
 ---
 
@@ -136,11 +127,19 @@ Este projeto foi desenvolvido para aprofundar conhecimentos em:
 
 - Desenvolvimento de aplicações mobile com **React Native** e **Expo**
 - Navegação entre telas com **React Navigation** (Stack e Bottom Tabs)
-- Integração com serviços de **geolocalização** e **mapas**
-- Criação de **UIs complexas** com animações e efeitos visuais
+- Gerenciamento de estado global com **Context API** e `useReducer`
+- Criação de **UIs complexas** com a API `Animated`, gradientes e desfoque
 - Uso estratégico de **IA generativa** como ferramenta de apoio no desenvolvimento
 - **Engenharia de prompts** aplicada à programação
 - Boas práticas de **organização de código** e estrutura de projetos
+
+---
+
+## 🧭 Próximos Passos
+
+- Mapa com as barbearias e localização do cliente (as bibliotecas `react-native-maps` e `expo-location` já estão instaladas)
+- Back-end com autenticação e agendamentos reais
+- Notificações push para o status do atendimento
 
 ---
 
@@ -157,12 +156,6 @@ Apaixonado por desenvolvimento mobile, web e inteligência artificial.
 [![GitHub](https://img.shields.io/badge/GitHub-gabrielnovaesdev-181717?style=flat-square&logo=github)](https://github.com/gabrielnovaesdev)
 
 </div>
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
